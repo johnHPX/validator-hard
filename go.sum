@@ -1,0 +1,6 @@
+github.com/badoux/checkmail v1.2.1 h1:TzwYx5pnsV6anJweMx2auXdekBwGr/yt1GgalIx9nBQ=
+github.com/badoux/checkmail v1.2.1/go.mod h1:XroCOBU5zzZJcLvgwU15I+2xXyCdTWXyR9MGfRhBYy0=
+github.com/paemuri/brdoc v1.1.2 h1:jl3opOVRVvVr+ubc9DpzENe/d1uuYLNac4V1h7Jul/c=
+github.com/paemuri/brdoc v1.1.2/go.mod h1:M0bbCy1qPGG0xou2ahCNXAntlkZ3Tl0w7NlC1v5fiZc=
+golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa h1:zuSxTR4o9y82ebqCUJYNGJbGPo6sKVl54f/TVDObg1c=
+golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa/go.mod h1:IxCIyHEi3zRg3s0A5j5BB6A9Jmi73HwBIUl50j+osU4=
