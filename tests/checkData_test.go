@@ -16,24 +16,32 @@ func TestCheckData(t *testing.T) {
 		cpf := "61868307301"
 		sizeCpf := 11
 
+		idade := 15
+		sizeIdade := 200
+
 		validator := validator.NewValidator()
 
 		_, err := validator.CheckAnyData("nome", sizeNome, nome, true)
 		if err != nil {
-			t.Errorf("Erro ao verificar campo! %e", err)
+			t.Errorf("Erro ao verificar campo! %s", err)
 		}
 		_, err = validator.CheckAnyData("email", sizeEmail, email, true)
 		if err != nil {
-			t.Errorf("Erro ao verificar campo! %e", err)
+			t.Errorf("Erro ao verificar campo! %s", err)
 		}
 
 		_, err = validator.CheckAnyData("cpf", sizeCpf, cpf, true)
 		if err != nil {
-			t.Errorf("Erro ao verificar campo! %e", err)
+			t.Errorf("Erro ao verificar campo! %s", err)
+		}
+
+		_, err = validator.CheckAnyData("idade", sizeIdade, idade, true)
+		if err != nil {
+			t.Errorf("Erro ao verificar campo! %s", err)
 		}
 
 	})
-	// teste negativo
+	//teste negativo
 	t.Run("Validar um Valor negativo", func(t *testing.T) {
 		nome := "steve"
 		sizeNome := 3
@@ -42,20 +50,35 @@ func TestCheckData(t *testing.T) {
 		cpf := "87667898701"
 		sizeCpf := 11
 
+		idade := 0
+		sizeIdade := 3
+
+		casada := false // casada?
+
 		validator := validator.NewValidator()
 
 		_, err := validator.CheckAnyData("nome", sizeNome, nome, true)
 		if err != nil {
-			t.Errorf("Erro ao verificar campo! %e", err)
+			t.Errorf("Erro ao verificar campo! %s", err)
 		}
 		_, err = validator.CheckAnyData("email", sizeEmail, email, true)
 		if err != nil {
-			t.Errorf("Erro ao verificar campo! %e", err)
+			t.Errorf("Erro ao verificar campo! %s", err)
 		}
 
 		_, err = validator.CheckAnyData("cpf", sizeCpf, cpf, true)
 		if err != nil {
-			t.Errorf("Erro ao verificar campo! %e", err)
+			t.Errorf("Erro ao verificar campo! %s", err)
+		}
+
+		_, err = validator.CheckAnyData("idade", sizeIdade, idade, true)
+		if err != nil {
+			t.Errorf("Erro ao verificar campo! %s", err)
+		}
+
+		_, err = validator.CheckAnyData("casada", 0, casada, true)
+		if err != nil {
+			t.Errorf("Erro ao verificar campo! %s", err)
 		}
 
 	})

@@ -14,23 +14,20 @@ import (
 func CheckIsEmpty(input interface{}, nameInput string) error {
 
 	if reflect.ValueOf(input).Kind() == reflect.String {
-		str, ok := input.(string)
-		s := strings.TrimSpace(str)
-		if !ok || s == "" {
+		s := strings.TrimSpace(input.(string))
+		if s == "" {
 			return errors.New(fmt.Sprintf("%v é obrigatório e não pode está em branco", nameInput))
 		}
 
 		return nil
 	} else if reflect.ValueOf(input).Kind() == reflect.Int {
-		_, ok := input.(int)
-		if !ok {
+		if input.(int) == 0 {
 			return errors.New(fmt.Sprintf("%v é obrigatório e não pode está em branco", nameInput))
 		}
 
 		return nil
 	} else if reflect.ValueOf(input).Kind() == reflect.Bool {
-		_, ok := input.(bool)
-		if !ok {
+		if !input.(bool) {
 			return errors.New(fmt.Sprintf("%v é obrigatório e não pode está em branco", nameInput))
 		}
 
@@ -40,9 +37,19 @@ func CheckIsEmpty(input interface{}, nameInput string) error {
 	return errors.New("Tipo não Permitido!")
 }
 func CheckLen(size int, input interface{}) error {
-	if size < len(input.(string)) {
-		return errors.New("O tamanho excede o permitido")
+
+	if reflect.ValueOf(input).Kind() == reflect.String {
+		if size < len(input.(string)) {
+			return errors.New("O tamanho excede o permitido")
+		}
+		return nil
+	} else if reflect.ValueOf(input).Kind() == reflect.Int {
+		if size < input.(int) {
+			return errors.New("O tamanho excede o permitido")
+		}
+		return nil
 	}
+
 	return nil
 }
 func CheckEmail(email string) error {

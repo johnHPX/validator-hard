@@ -7,7 +7,9 @@ import (
 )
 
 type Validator interface {
+	// CheckData validates any value from a request and if the value is a normal string, the function returns a new value.
 	CheckAnyData(nameData string, sizeData int, data interface{}, required bool) (interface{}, error)
+	// CheckPassword create a password by generating a hash and compare a password saved in the database with a password passed in the request. create vs compare. create: generate an encrypted password and return it. compare: compare passwordData with hashPassword, check if they are the same password
 	CheckPassword(sizePassword int, passawordData, hashPassword, operation string) (string, error)
 }
 
@@ -87,7 +89,7 @@ func (s *validator) CheckAnyData(nameData string, sizeData int, data interface{}
 
 }
 
-// CheckPassword create a password by generating a hash and compare a password saved in the database with a password passed in the request. create vs compare.
+// CheckPassword create a password by generating a hash and compare a password saved in the database with a password passed in the request. create vs compare. create: generate an encrypted password and return it. compare: compare passwordData with hashPassword, check if they are the same password
 func (s *validator) CheckPassword(sizePassword int, passawordData, hashPassword, operation string) (string, error) {
 	if operation == "create" {
 		dataNew, err := infra.FormatedInput(passawordData)
