@@ -1,35 +1,29 @@
-# validator-hard
-validator is a package for validating API requests.
+# Validator
+Validator is a package for validating API requests.
 
-modo de usar
+## Como importar
 
-como é um módulo privado, é necessário especificar para o Go que é privado.
+Como é um módulo público basta apenas adicionar ao go.mod com "go get".
 
-'''
-  export GOPRIVATE=github.com/johnHPX/validator-hard
-'''
-
-depois apenas adicionar ao módulo local com o go get
-
-'''
+```
   go get github.com/johnHPX/validator-hard
-'''
+```
 
-ademais, rodar o comando go mod tidy para fazer o download das dependencias.
+Depois, é só rodar o comando go mod tidy para fazer o download das dependencias.
 
-'''
+```
   go mod tidy
-'''
+```
 
-e por fim, importar o módulo e utilizar.
+E por fim, importar o módulo e utilizar.
 
-'''
+```
   import (
       "github.com/johnHPX/validator-hard/pkg/validator"
   )
   
-  
+
   func main(){
     validator := validator.NewValidator()
   }
-''
+```
